@@ -3,4 +3,4 @@
 host = localhost
 user = root
 password = 
-dbname = testdb
+dbname = csdl_tiendatpc
