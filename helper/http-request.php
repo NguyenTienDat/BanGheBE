@@ -1,5 +1,7 @@
 <?php
-
+require_once('utility.php');
+require_once('/../Db.class.php');
+require_once('/../api/user/user.dao.php');
 /**
  * Access the HTTP Request
  * 
@@ -10,6 +12,10 @@ class http_request
 
     /** additional HTTP headers not prefixed with HTTP_ in $_SERVER superglobal */
     public $add_headers = array('CONTENT_TYPE', 'CONTENT_LENGTH');
+    private $utility;
+    private $db;
+    private $userDAO;
+    private $TIME_OUT = 60 * 30; // second to time out token
 
     /**
      * Construtor
@@ -18,9 +24,61 @@ class http_request
      */
     function http_request($add_headers = false)
     {
+        $this->utility = new Utility();
+        $this->db = new DB();
+        $this->userDAO = new UserDAO();
 
         $this->retrieve_headers($add_headers);
         $this->body = @file_get_contents('php://input');
+
+        $caseAuth = $this->checkAuth();
+        switch ($caseAuth) {
+            case 2:
+            case 3:
+                $timeNow = microtime(true);
+                $this->userDAO->last_time = $timeNow;
+                $update = $this->userDAO->save();
+            break;
+        }
+    }
+
+    function checkAuth()
+    {
+        if (strpos($_SERVER['REQUEST_URI'], 'login')) {
+            // Login
+            return 1;
+        }
+        if ($this->utility->IsNullOrEmptyString($this->headers['TOKEN'])) {
+            $this->sendJsonResponse('You have not TOKEN', 401);
+            die();
+        }
+        $tokenDecode = $this->utility->JWT_decode($this->headers['TOKEN']);
+        // Lay Username, pass dang nhap lai
+        $this->userDAO = new UserDAO();
+        $this->userDAO->username = $tokenDecode->username;
+        $this->userDAO->password = $tokenDecode->password;
+        $this->userDAO->find();
+
+        if (!$this->userDAO || !$this->userDAO->username) {
+            $this->sendJsonResponse('TOKEN not correct _null', 401);
+            die();
+        }
+        if ($this->utility->IsNullOrEmptyString($this->userDAO->token)) {
+            // First time login
+            $this->userDAO->token = $this->headers['TOKEN'];
+            return 2;
+        }
+        if ($this->userDAO->token != $this->headers['TOKEN']) {
+            $this->sendJsonResponse('TOKEN not correct', 401);
+            die();
+        }
+
+        $timeNow = microtime(true);
+        if ($timeNow - $this->userDAO->last_time > $this->TIME_OUT) {
+            $this->sendJsonResponse('TOKEN expired', 401, $timeNow - $this->userDAO->last_time);
+            die();
+        }
+        return 3;
     }
 
     /**

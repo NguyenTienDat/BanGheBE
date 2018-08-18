@@ -5,7 +5,11 @@
   class Utility {
     public function JWT_decode($token)
     {
-      return JWT::decode($token, 'secret_server_key');
+      try {
+        return JWT::decode($token, 'secret_server_key');
+      } catch (Exception $e) {
+        return null;
+      }
     }
     public function JWT_encode($object)
     {
