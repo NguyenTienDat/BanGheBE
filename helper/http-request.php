@@ -171,12 +171,19 @@ class http_request
     // set the actual code
         http_response_code($code);
     // set the header to make sure cache is forced
-        header("Cache-Control: no-transform,public,max-age=300,s-maxage=900");
+        // header("Cache-Control: no-transform,public,max-age=300,s-maxage=900");
+        header("Access-Control-Allow-Origin: *");
+        header("Content-Type: application/json");
+        header("Accept: application/json");
+        header("Access-Control-Allow-Methods: POST,GET,OPTIONS,DELETE,PUT");
+        header("Access-Control-Allow-Headers: X-Requested-With,Content-Type,Origin,Authorization,Accept,Client-Security-Token,Accept-Encoding");
+        header("Access-Control-Allow-Credentials: true");
     // treat this as json
         header('Content-Type: application/json');
         $status = array(
             200 => '200 OK',
             400 => '400 Bad Request',
+            401 => '401 Unauthorized',
             422 => 'Unprocessable Entity',
             500 => '500 Internal Server Error'
         );
