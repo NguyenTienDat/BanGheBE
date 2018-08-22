@@ -1,7 +1,7 @@
 <?php
 require_once('utility.php');
-require_once('/../Db.class.php');
-require_once('/../api/user/user.dao.php');
+require_once(__DIR__ . '/../Db.class.php');
+require_once(__DIR__ . '/../api/user/user.dao.php');
 /**
  * Access the HTTP Request
  * 

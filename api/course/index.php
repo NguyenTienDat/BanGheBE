@@ -1,8 +1,8 @@
 <?php 
 // Require the person class file
   require_once("course.dao.php");
-  require_once("/../../helper/http-request.php");
-  require_once("/../../helper/utility.php");
+  require_once(__DIR__ . "/../../helper/http-request.php");
+  require_once(__DIR__ . "/../../helper/utility.php");
 	
 // Instantiate the person class
   $courseDAO  = new CourseDAO();

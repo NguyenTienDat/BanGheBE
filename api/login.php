@@ -1,7 +1,7 @@
 <?php 
-  require_once("/../Db.class.php");
-  require_once("/../helper/utility.php");
-  require_once("/../helper/http-request.php");
+  require_once(__DIR__ . "/../Db.class.php");
+  require_once(__DIR__ . "/../helper/utility.php");
+  require_once(__DIR__ . "/../helper/http-request.php");
   $http_request = new http_request();
   $utility = new Utility();
   $db = new DB();

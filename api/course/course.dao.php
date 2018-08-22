@@ -1,5 +1,5 @@
 <?php 
-	require_once("/../../easyCRUD/easyCRUD.class.php");
+	require_once(__DIR__ . "/../../easyCRUD/easyCRUD.class.php");
 
 	class CourseDAO Extends Crud {
 		
