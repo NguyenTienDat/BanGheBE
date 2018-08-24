@@ -12,20 +12,42 @@
 
   switch ($_SERVER['REQUEST_METHOD']) {
     case 'POST': // add
-      $courseDAO->name = $body->name;
-      $courseDAO->cost = $body->cost;
-      $courseDAO->description = $body->description;
-      $create = $courseDAO->create();
-      if ((int)$create == 1) {
-        $http_request->sendJsonResponse('success', 200, $create);
+      if (isset($_REQUEST['id'])) {
+        $courseDAO->id = $_REQUEST['id'];
+        $courseDAO->name = $body->name;
+        $courseDAO->cost = $body->cost;
+        $courseDAO->description = $body->description;
+        $save = $courseDAO->save();
+        if ((int)$save == 1) {
+          $http_request->sendJsonResponse('success', 200, $save);
+        } else {
+          $http_request->sendJsonResponse('save error', 400);
+        }
+        die();
       } else {
-        $http_request->sendJsonResponse('create error', 400);
+        $courseDAO->name = $body->name;
+        $courseDAO->cost = $body->cost;
+        $courseDAO->description = $body->description;
+        $create = $courseDAO->create();
+        if ((int)$create == 1) {
+          $http_request->sendJsonResponse('success', 200, $create);
+        } else {
+          $http_request->sendJsonResponse('create error', 400);
+        }
+        die();
       }
-      die();
       break;
     case 'GET': // id - all
       if (isset($_REQUEST['id'])) {
         $courseDAO->id = $_REQUEST['id'];
+        if (isset($_REQUEST['type']) && $_REQUEST['type'] == 'delete') {
+            $delete = $courseDAO->delete();
+            $http_request->sendJsonResponse('success', 200, $delete);
+            die();
+          $http_request->sendJsonResponse('delete error id null', 400);
+          die();
+          break;
+        }
         $getID = $courseDAO->find();
         $http_request->sendJsonResponse('success', 200, $courseDAO->variables);
         die();
@@ -54,7 +76,7 @@
       $http_request->sendJsonResponse('save error id null', 400);
       die();
       break;
-    case 'DELETE': // edit
+    case 'DELETE': // delete
       if (isset($_REQUEST['id'])) {
         $courseDAO->id = $_REQUEST['id'];
         $delete = $courseDAO->delete();
