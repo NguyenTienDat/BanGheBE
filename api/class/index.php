@@ -18,6 +18,7 @@
         $classDAO->start_date = $body->start_date;
         $classDAO->end_date = $body->end_date;
         $classDAO->description = $body->description;
+        $classDAO->course_id_ref = $body->course_id_ref;
         $save = $classDAO->save();
         $http_request->sendJsonResponse('success', 200, $save);
         die();
@@ -26,6 +27,7 @@
         $classDAO->start_date = $body->start_date;
         $classDAO->end_date = $body->end_date;
         $classDAO->description = $body->description;
+        $classDAO->course_id_ref = $body->course_id_ref;
         $create = $classDAO->create();
         $http_request->sendJsonResponse('success', 200, $create);
         die();
@@ -59,6 +61,7 @@
         $classDAO->name = $body->name;
         $classDAO->start_date = $body->start_date;
         $classDAO->end_date = $body->end_date;
+        $classDAO->course_id_ref = $body->course_id_ref;
         $classDAO->description = $body->description;
         $save = $classDAO->save();
         $http_request->sendJsonResponse('success', 200, $save);
