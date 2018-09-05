@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th9 03, 2018 lúc 05:58 PM
+-- Thời gian đã tạo: Th9 05, 2018 lúc 07:53 PM
 -- Phiên bản máy phục vụ: 10.1.35-MariaDB
 -- Phiên bản PHP: 7.2.9
 
@@ -37,14 +37,6 @@ CREATE TABLE `class` (
   `end_date` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
---
--- Đang đổ dữ liệu cho bảng `class`
---
-
-INSERT INTO `class` (`id`, `course_id_ref`, `name`, `description`, `start_date`, `end_date`) VALUES
-(1, 10, 'TNCB1T.A1', 'Lớp thanh nhạc TNCB1T.A1', '2018-07-28', '2018-08-02'),
-(2, 2, 'L[ps 4', 'df', '2018-09-15', '2018-10-04');
-
 -- --------------------------------------------------------
 
 --
@@ -55,16 +47,38 @@ CREATE TABLE `course` (
   `id` int(11) NOT NULL,
   `name` varchar(200) NOT NULL,
   `cost` int(11) NOT NULL,
-  `description` varchar(250) NOT NULL
+  `description` varchar(250) NOT NULL,
+  `course_id_ref` int(11) NOT NULL,
+  `start_date` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Đang đổ dữ liệu cho bảng `course`
 --
 
-INSERT INTO `course` (`id`, `name`, `cost`, `description`) VALUES
-(2, 'Thanh Nhạc Cơ Bản', 5000000, 'Khóa học thanh nhạc căn bản'),
-(10, 'Thanh nhạc nâng cao', 2600000, 'nâng cao thôi mà');
+INSERT INTO `course` (`id`, `name`, `cost`, `description`, `course_id_ref`, `start_date`) VALUES
+(1, 'THANH NHẠC 062018', 2500000, 'Khóa thanh nhạc tháng 6 năm 2018', 0, '2018-06-01'),
+(2, 'THANH NHẠC 012018', 2500000, 'Khóa thanh nhạc tháng 1 năm 2018', 0, '2018-01-01'),
+(3, 'THANH NHẠC 032018', 2500000, 'Khóa thanh nhạc tháng 3 năm 2018', 0, '2018-03-01'),
+(4, 'THANH NHẠC 092018', 2500000, 'Khóa thanh nhạc tháng 9 năm 2018', 0, '2018-09-01'),
+(5, 'NGHỆ SĨ TOÀN DIỆN T012018', 4000000, 'Khóa học nghệ sĩ toàn diện tháng 1 năm 2018', 0, '2018-01-01'),
+(6, 'NGHỆ SĨ TOÀN DIỆN T032018', 4000000, 'Khóa học nghệ sĩ toàn diện tháng 3 năm 2018', 0, '2018-03-01'),
+(7, 'NGHỆ SĨ TOÀN DIỆN T062018', 4000000, 'Khóa học nghệ sĩ toàn diện tháng 6 năm 2018', 0, '2018-06-01'),
+(8, 'NGHỆ SĨ TOÀN DIỆN T092018', 4000000, 'Khóa học nghệ sĩ toàn diện tháng 9 năm 2018', 0, '2018-09-01'),
+(9, 'CĂN BẢN', 0, '', 5, '2018-01-01'),
+(10, 'NÂNG CAO', 0, '', 5, '2018-01-01');
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `schedua_class`
+--
+
+CREATE TABLE `schedua_class` (
+  `id` int(11) NOT NULL,
+  `class_id` int(11) NOT NULL,
+  `appointment` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -203,29 +217,6 @@ CREATE TABLE `student_class` (
   `class_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Đang đổ dữ liệu cho bảng `student_class`
---
-
-INSERT INTO `student_class` (`student_id`, `class_id`) VALUES
-(1, 1),
-(1, 2),
-(2, 2),
-(3, 1),
-(3, 2),
-(4, 1),
-(4, 2),
-(5, 1),
-(6, 1),
-(6, 2),
-(7, 1),
-(7, 2),
-(8, 1),
-(9, 1),
-(9, 2),
-(10, 1),
-(10, 2);
-
 -- --------------------------------------------------------
 
 --
@@ -261,7 +252,7 @@ CREATE TABLE `user` (
 
 INSERT INTO `user` (`id_ref`, `username`, `password`, `type`, `last_time`, `token`) VALUES
 (0, 'admin', 'a', 2, 0, ''),
-(1, 'tiendatpc', 'mk', 1, 1535990184.1913, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZF9yZWYiOjEsInVzZXJuYW1lIjoidGllbmRhdHBjIiwicGFzc3dvcmQiOiJtayIsInR5cGUiOjEsImxhc3RfdGltZSI6MTUzNTk4Nzc1NC44NTY1M30.bQ89M3pzR7pqtqBipFBDxPRU7yUy2H9jOwlEbJJigtI');
+(1, 'tiendatpc', 'mk', 1, 1536169895.6964, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZF9yZWYiOjEsInVzZXJuYW1lIjoidGllbmRhdHBjIiwicGFzc3dvcmQiOiJtayIsInR5cGUiOjEsImxhc3RfdGltZSI6MTUzNjE2NzQ1OS42MjAwMzN9.bqQSIROJPeFhwrJjlge9-2IH81OOQjAdNKIQgYAczYk');
 
 --
 -- Chỉ mục cho các bảng đã đổ
@@ -277,6 +268,12 @@ ALTER TABLE `class`
 -- Chỉ mục cho bảng `course`
 --
 ALTER TABLE `course`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Chỉ mục cho bảng `schedua_class`
+--
+ALTER TABLE `schedua_class`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -311,13 +308,19 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT cho bảng `class`
 --
 ALTER TABLE `class`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT cho bảng `course`
 --
 ALTER TABLE `course`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
+--
+-- AUTO_INCREMENT cho bảng `schedua_class`
+--
+ALTER TABLE `schedua_class`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT cho bảng `student`
