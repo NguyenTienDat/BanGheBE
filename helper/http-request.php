@@ -195,6 +195,7 @@ class http_request
             'message' => $message,
             'data' => $data
         ));
+        die();
     }
 
     function getRequest()
