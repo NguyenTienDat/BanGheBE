@@ -19,6 +19,7 @@
         $classDAO->start_date = $body->start_date;
         $classDAO->end_date = $body->end_date;
         $classDAO->description = $body->description;
+        $classDAO->color = $body->color;
         $save = $classDAO->save();
         $http_request->sendJsonResponse('success', 200, $save);
         die();
@@ -28,6 +29,7 @@
         $classDAO->start_date = $body->start_date;
         $classDAO->end_date = $body->end_date;
         $classDAO->description = $body->description;
+        $classDAO->color = $body->color;
         $create = $classDAO->create();
         $http_request->sendJsonResponse('success', 200, $create);
         die();
