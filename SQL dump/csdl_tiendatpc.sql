@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th9 10, 2018 lúc 07:29 PM
+-- Thời gian đã tạo: Th9 11, 2018 lúc 07:25 PM
 -- Phiên bản máy phục vụ: 10.1.35-MariaDB
 -- Phiên bản PHP: 7.2.9
 
@@ -93,11 +93,11 @@ CREATE TABLE `scheduale` (
 --
 
 INSERT INTO `scheduale` (`id`, `id_ref`, `allDay`, `startDate`, `endDate`, `text`, `description`, `recurrenceRule`) VALUES
-(18, 3, 0, '2018-09-03 18:00:00', '2018-09-03 19:30:00', 'TNCB1T.A1', '', 'FREQ=WEEKLY;BYDAY=MO,WE;COUNT=8'),
 (19, 4, 0, '2018-09-08 16:30:00', '2018-09-08 18:00:00', 'VDCB - BEGINNER', '', 'FREQ=WEEKLY;BYDAY=SA;COUNT=8'),
 (20, 7, 0, '2018-09-03 19:30:00', '2018-09-03 21:00:00', 'TNCB1T.A2', '', 'FREQ=WEEKLY;BYDAY=MO,WE;COUNT=8'),
 (21, 9, 0, '2018-09-03 13:30:00', '2018-09-03 15:00:00', 'TNCB1C.A1', '', 'FREQ=WEEKLY;BYDAY=MO,WE;COUNT=8'),
-(22, 10, 0, '2018-09-04 15:00:00', '2018-09-04 16:30:00', 'KTDD1', '', 'FREQ=WEEKLY;BYDAY=TU;COUNT=4');
+(22, 10, 0, '2018-09-04 15:00:00', '2018-09-04 16:30:00', 'KTDD1', '', 'FREQ=WEEKLY;BYDAY=TU;COUNT=4'),
+(23, 10, 0, '2018-09-05 07:00:00', '2018-09-05 22:00:00', 'KTDD1', '', 'FREQ=WEEKLY;BYDAY=MO,WE;COUNT=8');
 
 -- --------------------------------------------------------
 
@@ -236,21 +236,25 @@ CREATE TABLE `student_check` (
   `class_id` int(11) NOT NULL,
   `student_id` int(11) NOT NULL,
   `type` int(1) NOT NULL DEFAULT '0',
-  `time` datetime NOT NULL
+  `time` datetime NOT NULL,
+  `description` varchar(200) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Đang đổ dữ liệu cho bảng `student_check`
 --
 
-INSERT INTO `student_check` (`id`, `class_id`, `student_id`, `type`, `time`) VALUES
-(7, 3, 4, 1, '2018-09-05 07:00:00'),
-(8, 3, 5, 0, '2018-09-05 07:00:00'),
-(9, 3, 6, 0, '2018-09-05 07:00:00'),
-(10, 3, 7, 0, '2018-09-05 07:00:00'),
-(11, 9, 8, 0, '2018-09-05 07:00:00'),
-(12, 9, 9, 1, '2018-09-05 07:00:00'),
-(13, 9, 10, 1, '2018-09-05 07:00:00');
+INSERT INTO `student_check` (`id`, `class_id`, `student_id`, `type`, `time`, `description`) VALUES
+(47, 3, 4, 0, '2018-09-05 18:00:00', 'xin phép'),
+(48, 3, 5, 1, '2018-09-05 18:00:00', ''),
+(49, 3, 6, 0, '2018-09-05 18:00:00', ''),
+(50, 3, 7, 0, '2018-09-05 18:00:00', ''),
+(51, 9, 8, 0, '2018-09-05 13:30:00', ''),
+(52, 9, 9, 1, '2018-09-05 13:30:00', ''),
+(53, 9, 10, 0, '2018-09-05 13:30:00', ''),
+(54, 10, 4, 1, '2018-09-05 07:00:00', ''),
+(55, 10, 7, 1, '2018-09-05 07:00:00', ''),
+(56, 10, 9, 0, '2018-09-05 07:00:00', '');
 
 -- --------------------------------------------------------
 
@@ -328,7 +332,7 @@ CREATE TABLE `user` (
 
 INSERT INTO `user` (`id_ref`, `username`, `password`, `type`, `last_time`, `token`) VALUES
 (0, 'admin', 'a', 2, 0, ''),
-(1, 'tiendatpc', 'mk', 1, 1536600449.4102, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZF9yZWYiOjEsInVzZXJuYW1lIjoidGllbmRhdHBjIiwicGFzc3dvcmQiOiJtayIsInR5cGUiOjEsImxhc3RfdGltZSI6MTUzNjU5NTg0Ni4zMTYyMzN9.EJi2LxkQz-pdSvvVYjEHNY6UEKKRvYJ3WHjtAaUlTFo');
+(1, 'tiendatpc', 'mk', 1, 1536686668.0366, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZF9yZWYiOjEsInVzZXJuYW1lIjoidGllbmRhdHBjIiwicGFzc3dvcmQiOiJtayIsInR5cGUiOjEsImxhc3RfdGltZSI6MTUzNjY3NzgyMy45MTE3NDZ9.26blwOm_2OD5ILYqxWY_FDNVXAGNC9p1WhFNyS0ETe4');
 
 --
 -- Chỉ mục cho các bảng đã đổ
@@ -403,7 +407,7 @@ ALTER TABLE `course`
 -- AUTO_INCREMENT cho bảng `scheduale`
 --
 ALTER TABLE `scheduale`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT cho bảng `student`
@@ -415,7 +419,7 @@ ALTER TABLE `student`
 -- AUTO_INCREMENT cho bảng `student_check`
 --
 ALTER TABLE `student_check`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=57;
 
 --
 -- AUTO_INCREMENT cho bảng `test`

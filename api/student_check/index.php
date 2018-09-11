@@ -7,7 +7,15 @@
   $db = new DB();
 
   switch ($_SERVER['REQUEST_METHOD']) {
-    case 'POST': // ids_check, ids_uncheck
+    case 'POST': 
+      if (isset($_REQUEST['type']) && $_REQUEST['type'] == 'description') {
+        $id = $body->id;
+        $description = $body->description;
+        $upodate = $db->query("UPDATE student_check SET description = :description WHERE id = :id", array("id"=>$id, "description"=>$description));
+        $http_request->sendJsonResponse('success', 200, $upodate);
+      }
+    
+      // ids_check, ids_uncheck
       if (isset($body->ids_check) && isset($body->ids_uncheck)) {
         // uncheck
         if (!empty($body->ids_uncheck)) {
@@ -51,7 +59,7 @@
             $db->query("INSERT INTO student_check (student_id, class_id, time) VALUES $insertStr");
           }
         }
-        $select = $db->query("SELECT student_check.*, student.name,	student.birthday, student.phone, student.email, student.start_date, student.new_month_date, student.payment_date, student.description
+        $select = $db->query("SELECT student_check.*, student.name,	student.birthday, student.phone, student.email, student.start_date, student.new_month_date, student.payment_date
         FROM student_check LEFT JOIN student ON student.id = student_check.student_id WHERE class_id = :class_id AND time =:time", array("class_id"=>$classID, "time"=>$time));
         $http_request->sendJsonResponse('success', 200, $select);
       }
