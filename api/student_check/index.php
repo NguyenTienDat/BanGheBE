@@ -15,6 +15,13 @@
         $http_request->sendJsonResponse('success', 200, $upodate);
       }
     
+      if (isset($body->id) && isset($body->type)) {
+        $id = $body->id;
+        $type = $body->type;
+        $updatetype = $db->query("UPDATE student_check SET type = :type WHERE id = :id", array("type"=>$type, "id"=>$id));
+        $http_request->sendJsonResponse('success', 200, $updatetype);
+      }
+
       // ids_check, ids_uncheck
       if (isset($body->ids_check) && isset($body->ids_uncheck)) {
         // uncheck

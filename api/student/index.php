@@ -38,6 +38,14 @@
       }
       break;
     case 'GET': // id - all
+      // get by class id
+      if (isset($_REQUEST['class_id'])) {
+        $class_id = $_REQUEST['class_id'];
+        $students = $db->query("select student.* from student_class
+          INNER JOIN student ON student.id = student_class.student_id
+          WHERE class_id = :class_id", array("class_id"=>$class_id));
+        $http_request->sendJsonResponse('success', 200, $students);
+      }
       if (isset($_REQUEST['id'])) {
         $tableDAO->id = $_REQUEST['id'];
         if (isset($_REQUEST['type']) && $_REQUEST['type'] == 'delete') {

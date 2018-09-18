@@ -73,14 +73,14 @@
         /**
          * Get by id
          */
-        $getID = $db->query("SELECT sche.*, class.name as class_name FROM (SELECT scheduale.* FROM scheduale WHERE id = :id ) as sche LEFT JOIN class ON class.id = sche.id_ref", array("id"=>$id));
+        $getID = $db->query("SELECT sche.*, class.name as class_name, class.color FROM (SELECT scheduale.* FROM scheduale WHERE id = :id ) as sche LEFT JOIN class ON class.id = sche.id_ref", array("id"=>$id));
         $http_request->sendJsonResponse('success', 200, $getID);
       } else {
 
         /**
          * Get ALL
          */
-        $getAll = $db->query("SELECT scheduale.*, class.name as class_name FROM scheduale LEFT JOIN class ON class.id = scheduale.id_ref");
+        $getAll = $db->query("SELECT scheduale.*, class.name as class_name, class.color FROM scheduale LEFT JOIN class ON class.id = scheduale.id_ref");
         $http_request->sendJsonResponse('success', 200, $getAll);
         die();
       }

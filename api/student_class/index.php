@@ -12,18 +12,18 @@
     case 'POST':
       if (isset($body->class_id)) {
         $classId = $body->class_id;
-        if (isset($body->student_ids_remove) && !empty($body->student_ids_remove)) {
+        if (isset($body->ids_uncheck) && !empty($body->ids_uncheck)) {
           $deleteStr = '';
-          foreach ($body->student_ids_remove as $key => $value) {
+          foreach ($body->ids_uncheck as $key => $value) {
             $deleteStr .= "$value ,";
           }
           $deleteStr = substr($deleteStr, 0, -1);
           $de = $db->query("DELETE FROM student_class WHERE class_id = $classId AND student_id IN ($deleteStr)");
         }
 
-        if (isset($body->student_ids_add) && !empty($body->student_ids_add)) {
+        if (isset($body->ids_check) && !empty($body->ids_check)) {
           $insertStr = '';
-          foreach ($body->student_ids_add as $key => $value) {
+          foreach ($body->ids_check as $key => $value) {
             $insertStr .= "($value, $classId),";
           }
           $insertStr = substr($insertStr, 0, -1);
