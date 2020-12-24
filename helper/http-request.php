@@ -48,36 +48,36 @@ class http_request
             // Login
             return 1;
         }
-        if ($this->utility->IsNullOrEmptyString($this->headers['TOKEN'])) {
-            $this->sendJsonResponse('You have not TOKEN', 401);
-            die();
-        }
-        $tokenDecode = $this->utility->JWT_decode($this->headers['TOKEN']);
-        // Lay Username, pass dang nhap lai
-        $this->userDAO = new UserDAO();
-        $this->userDAO->username = $tokenDecode->username;
-        $this->userDAO->password = $tokenDecode->password;
-        $this->userDAO->find();
+        // if ($this->utility->IsNullOrEmptyString($this->headers['TOKEN'])) {
+        //     $this->sendJsonResponse('You have not TOKEN', 401);
+        //     die();
+        // }
+        // $tokenDecode = $this->utility->JWT_decode($this->headers['TOKEN']);
+        // // Lay Username, pass dang nhap lai
+        // $this->userDAO = new UserDAO();
+        // $this->userDAO->username = $tokenDecode->username;
+        // $this->userDAO->password = $tokenDecode->password;
+        // $this->userDAO->find();
 
-        if (!$this->userDAO || !$this->userDAO->username) {
-            $this->sendJsonResponse('TOKEN not correct _null', 401);
-            die();
-        }
-        if ($this->utility->IsNullOrEmptyString($this->userDAO->token)) {
-            // First time login
-            $this->userDAO->token = $this->headers['TOKEN'];
-            return 2;
-        }
-        if ($this->userDAO->token != $this->headers['TOKEN']) {
-            $this->sendJsonResponse('TOKEN not correct', 401);
-            die();
-        }
+        // if (!$this->userDAO || !$this->userDAO->username) {
+        //     $this->sendJsonResponse('TOKEN not correct _null', 401);
+        //     die();
+        // }
+        // if ($this->utility->IsNullOrEmptyString($this->userDAO->token)) {
+        //     // First time login
+        //     $this->userDAO->token = $this->headers['TOKEN'];
+        //     return 2;
+        // }
+        // if ($this->userDAO->token != $this->headers['TOKEN']) {
+        //     $this->sendJsonResponse('TOKEN not correct', 401);
+        //     die();
+        // }
 
-        $timeNow = microtime(true);
-        if ($timeNow - $this->userDAO->last_time > $this->TIME_OUT) {
-            $this->sendJsonResponse('TOKEN expired', 401, $timeNow - $this->userDAO->last_time);
-            die();
-        }
+        // $timeNow = microtime(true);
+        // if ($timeNow - $this->userDAO->last_time > $this->TIME_OUT) {
+        //     $this->sendJsonResponse('TOKEN expired', 401, $timeNow - $this->userDAO->last_time);
+        //     die();
+        // }
         return 3;
     }
 
@@ -175,8 +175,8 @@ class http_request
         header("Access-Control-Allow-Origin: *");
         header("Content-Type: application/json");
         header("Accept: application/json");
-        header("Access-Control-Allow-Methods: POST,GET,OPTIONS,DELETE,PUT");
-        header("Access-Control-Allow-Headers: X-Requested-With,Content-Type,Origin,Authorization,Accept,Client-Security-Token,Accept-Encoding");
+        header("Access-Control-Allow-Methods: GET, POST, PUT, DELETE, PATCH, OPTIONS");
+        header("Access-Control-Allow-Headers: X-Requested-With,Content-Type,Origin,Authorization,Accept,Client-Security-Token,Accept-Encoding,TOKEN");
         header("Access-Control-Allow-Credentials: true");
     // treat this as json
         header('Content-Type: application/json');
@@ -190,12 +190,12 @@ class http_request
     // ok, validation error, or failure
         header('Status: ' . $status[$code]);
     // return the encoded json
-        echo json_encode(array(
+        print_r(json_encode(array(
             'status' => $code < 300, // success or not?
             'message' => $message,
             'data' => $data
-        ));
-        die();
+        )));
+        // die();
     }
 
     function getRequest()

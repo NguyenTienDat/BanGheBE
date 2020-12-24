@@ -25,7 +25,7 @@
         $updateUser = $db->query("UPDATE user SET last_time = :last_time, token = :token WHERE username = :username", $paramsUpdate);
 
         // Send token
-        $http_request->sendJsonResponse('success', 200, $token);
+        $http_request->sendJsonResponse('success', 200, $select);
       } else {
         $http_request->sendJsonResponse('Tài khoản không tồn tại (Login_3)', 400);
       }

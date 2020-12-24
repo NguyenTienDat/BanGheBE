@@ -1,0 +1,37 @@
+Time : 18:07:41
+SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'username' cannot be null
+Raw SQL : INSERT INTO cart (product_id,username,quantity) VALUES (:product_id,:username,:quantity)
+
+Time : 18:07:19
+SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'username' cannot be null
+Raw SQL : INSERT INTO cart (product_id,username,quantity) VALUES (:product_id,:username,:quantity)
+
+Time : 18:06:29
+SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'username' cannot be null
+Raw SQL : INSERT INTO cart (product_id,username,quantity) VALUES (:product_id,:username,:quantity)
+
+Time : 17:58:20
+SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '0' at line 1
+
+Time : 17:57:22
+SQLSTATE[42000]: Syntax error or access violation: 1065 Query was empty
+
+Time : 17:29:59
+SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'product_id' cannot be null
+Raw SQL : INSERT INTO cart (product_id,username,quantity) VALUES (:product_id,:username,:quantity)
+
+Time : 17:29:44
+SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'product_id' cannot be null
+Raw SQL : INSERT INTO cart (product_id,username,quantity) VALUES (:product_id,:username,:quantity)
+
+Time : 17:29:44
+SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'product_id' cannot be null
+Raw SQL : INSERT INTO cart (product_id,username,quantity) VALUES (:product_id,:username,:quantity)
+
+Time : 17:29:43
+SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'product_id' cannot be null
+Raw SQL : INSERT INTO cart (product_id,username,quantity) VALUES (:product_id,:username,:quantity)
+
+Time : 17:29:42
+SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'product_id' cannot be null
+Raw SQL : INSERT INTO cart (product_id,username,quantity) VALUES (:product_id,:username,:quantity)
