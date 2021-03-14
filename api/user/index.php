@@ -53,16 +53,8 @@
       }
       break;
     case 'GET': // id_ref - all
-      if (isset($_REQUEST['id_ref'])) {
-        $userDAO->id_ref = $_REQUEST['id_ref'];
-        if (isset($_REQUEST['type']) && $_REQUEST['type'] == 'delete') {
-            $delete = $userDAO->delete();
-            $http_request->sendJsonResponse('success', 200, $delete);
-            die();
-          $http_request->sendJsonResponse('delete error id_ref null', 400);
-          die();
-          break;
-        }
+      if (isset($_REQUEST['username'])) {
+        $userDAO->username = $_REQUEST['username'];
         $getid_ref = $userDAO->find();
         $http_request->sendJsonResponse('success', 200, $userDAO->variables);
         die();
