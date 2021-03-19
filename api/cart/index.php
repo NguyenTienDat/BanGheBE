@@ -12,13 +12,24 @@
 
   switch ($_SERVER['REQUEST_METHOD']) {
     case 'POST': // add
+      if (isset($_REQUEST['type'])) { // delete
+        if (isset($_REQUEST['username'])) {
+          $cartDAO->username = $_REQUEST['username'];
+          $queryDelString = "DELETE FROM cart WHERE cart.username = '". $_REQUEST['username'] ."'";
+          $delete = $db->query($queryDelString);
+          $http_request->sendJsonResponse('success', 200, $delete);
+          die();
+        }
+        $http_request->sendJsonResponse('delete error id null', 400);
+        die();
+      } else {
         $cartDAO->product_id = $body->product_id;
         $cartDAO->username = $body->username;
         $cartDAO->quantity = $body->quantity;
-        $cartDAO->Ngay = $body->Ngay;
         $create = $cartDAO->create();
         $http_request->sendJsonResponse('success', 200, $create);
         die();
+      }
       break;
     case 'GET': // id - all
       if (isset($_REQUEST['username']) && isset($_REQUEST['product_id'])) {
@@ -26,6 +37,11 @@
         SELECT cart.*
         FROM cart
         WHERE cart.username = '". $_REQUEST['username'] ."' and cart.product_id='".$_REQUEST['product_id']."'";
+
+        $queryGetString = "
+          SELECT cart.*, product.name, product.price, product.image 
+          FROM cart,product
+          WHERE cart.product_id=product.id and username = '". $_REQUEST['username'] ."' and product_id='".$_REQUEST['product_id']."'";
 
         $getByUser = $db->query($queryGetString);
         $http_request->sendJsonResponse('success', 200, $getByUser);
@@ -56,10 +72,9 @@
     case 'PUT': // edit
       if (isset($_REQUEST['id'])) {
         $cartDAO->id = $_REQUEST['id'];
-        // $cartDAO->product_id = $body->product_id;
-        // $cartDAO->username = $body->username;
+        $cartDAO->product_id = $body->product_id;
+        $cartDAO->username = $body->username;
         $cartDAO->quantity = $body->quantity;
-        $cartDAO->Ngay = $body->Ngay;
         $save = $cartDAO->save();
         $http_request->sendJsonResponse('success', 200, $save);
         die();
@@ -68,9 +83,10 @@
       die();
       break;
     case 'DELETE': // delete
-      if (isset($_REQUEST['id'])) {
-        $cartDAO->id = $_REQUEST['id'];
-        $delete = $cartDAO->delete();
+      if (isset($_REQUEST['username'])) {
+        $cartDAO->username = $_REQUEST['username'];
+        $queryDelString = "DELETE FROM cart WHERE cart.username = '". $_REQUEST['username'] ."'";
+        $delete = $db->query($queryDelString);
         $http_request->sendJsonResponse('success', 200, $delete);
         die();
       }
