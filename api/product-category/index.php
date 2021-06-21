@@ -15,12 +15,13 @@
       if (isset($_REQUEST['id'])) {
         $productDAO->id = $_REQUEST['id'];
         $productDAO->name = $body->name;
+        $productDAO->image = $body->image;
         $save = $productDAO->save();
         $http_request->sendJsonResponse('success', 200, $save);
         die();
       } else {
         $productDAO->name = $body->name;
-        
+        $productDAO->image = $body->image;
         $create = $productDAO->create();
         $http_request->sendJsonResponse('success', 200, $create);
         die();
@@ -41,7 +42,7 @@
         $http_request->sendJsonResponse('success', 200, $productDAO->variables);
         die();
       } else {
-        $queryGetString = 'SELECT * FROM product_category';
+        $queryGetString = 'SELECT * FROM product_category ';
         $getAll = $db->query($queryGetString);
         $http_request->sendJsonResponse('success', 200, $getAll);
         die();
@@ -53,7 +54,7 @@
       if (isset($_REQUEST['id'])) {
         $productDAO->id = $_REQUEST['id'];
         $productDAO->name = $body->name;
-         
+        $productDAO->image = $body->image;
         $save = $productDAO->save();
         $http_request->sendJsonResponse('success', 200, $save);
         die();
