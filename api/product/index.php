@@ -21,6 +21,7 @@
         $productDAO->color = $body->color;
         $productDAO->description = $body->description;
         $productDAO->image = $body->image;
+        $productDAO->category = $body->category;
         $save = $productDAO->save();
         $http_request->sendJsonResponse('success', 200, $save);
         die();
@@ -32,6 +33,7 @@
         $productDAO->color = $body->color;
         $productDAO->description = $body->description;
         $productDAO->image = $body->image;
+        $productDAO->category = $body->category;
         $create = $productDAO->create();
         $http_request->sendJsonResponse('success', 200, $create);
         die();
@@ -70,6 +72,7 @@
         $productDAO->color = $body->color;
         $productDAO->description = $body->description;
         $productDAO->image = $body->image;
+        $productDAO->category = $body->category;
         $save = $productDAO->save();
         $http_request->sendJsonResponse('success', 200, $save);
         die();
