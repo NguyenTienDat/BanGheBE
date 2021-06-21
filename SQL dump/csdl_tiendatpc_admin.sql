@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.4
+-- version 5.0.2
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th6 21, 2021 lúc 07:33 AM
--- Phiên bản máy phục vụ: 10.4.16-MariaDB
--- Phiên bản PHP: 7.4.12
+-- Thời gian đã tạo: Th6 21, 2021 lúc 09:53 AM
+-- Phiên bản máy phục vụ: 10.4.14-MariaDB
+-- Phiên bản PHP: 7.2.33
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -92,7 +92,7 @@ CREATE TABLE `product` (
 --
 
 INSERT INTO `product` (`id`, `name`, `price`, `size`, `weight`, `color`, `description`, `image`, `category`) VALUES
-(1, 'Ghế ngồi Bunny nhựa đúc E28', 7900000, '50cm x 42cm x 44/80cm', '', 'Xám', 'Ghế Bunny chair nhựa đúc\n\n• Chiếc Ghế ăn nhựa đúc Bunny mang phong cách Scandinavian được cấu tạo từ chất liệu nhựa đúc nguyên chiếc, mang lại cảm giác thoải mái và mát mẻ khi sử dụng.\n\n• Chiếc Ghế cafe nhựa đúc Bunny này không chỉ dùng làm ghế ăn cho gia đình, mà còn làm ghế ngồi cho các quán cafe cao cấp và ghế học cho các bạn nhỏ..\n', '  https://product.hstatic.net/1000341603/product/ghe-cafe-nhua-duc-bunny-ghi_5fb3f98085044a1abba16273ff728558_master.jpg', 0),
+(1, 'Ghế ngồi Bunny nhựa đúc E28', 7900000, '50cm x 42cm x 44/80cm', '', 'Xám', 'Ghế Bunny chair nhựa đúc\n\n• Chiếc Ghế ăn nhựa đúc Bunny mang phong cách Scandinavian được cấu tạo từ chất liệu nhựa đúc nguyên chiếc, mang lại cảm giác thoải mái và mát mẻ khi sử dụng.\n\n• Chiếc Ghế cafe nhựa đúc Bunny này không chỉ dùng làm ghế ăn cho gia đình, mà còn làm ghế ngồi cho các quán cafe cao cấp và ghế học cho các bạn nhỏ..\n', '  https://product.hstatic.net/1000341603/product/ghe-cafe-nhua-duc-bunny-ghi_5fb3f98085044a1abba16273ff728558_master.jpg', 1),
 (2, 'Ghế ngồi cafa đẹp E22 - Ghế HAL WOOD', 8500000, 'Cao 79cm, cao mặt ngồi 43cm, rộng 47cm, sâu 49cm', '10kg', 'Đen', 'Ghế cafe đẹp E22 - Ghế HAL WOOD\n\n• Ghế HAL WOOD được thiết kế rất đơn giản với chân gỗ sồi, thân nhựa đúc liền khối nhưng lại vô cùng trẻ trung, sinh động với nhiều màu sắc tươi sáng, bắt mắt. Ghế có thể sử dụng với nhiều không gian: Ghế cafe, ghế ăn, ghế ngoài trời, ghế làm việc, ghế đọc sách, ghế trang điểm, ghế trà sữa, ...', '  https://product.hstatic.net/1000341603/product/ghe_hal_nhua_duc_den_f1cadc2c7cf541fab80a0b1198b017e4_master.jpg', 0),
 (3, 'Ghế ngồi cafe NELSON bọc da chân sắt', 1350000, 'H84cm x W52cm x D45cm (mặt ngồi cao 44cm)', '6kg', 'Xám', 'Ghế ăn cafe NELSON bọc da chân sắt\n\n• Ghế NELSON bọc da chân sắt được cấu tạo từ chân sắt sơn tĩnh điện chắc chắc, phần thân ghế được bọc da mang phong cách hiện đại. Phần lưng tựa được thiết kế với độ sâu phù hợp, phần nệm ghế NELSON sử dụng mút bọc da nhân tạo mang lại cảm giác ngồi êm ái. Sự kết hợp mặt nệm và lưng tựa tạo lên sự thoải mái tuyệt vời khi sử dụng.\n\n• Sử dụng làm ghế ăn, ghế cafe, ghế trang điểm, ghế văn phòng, trà sữa, nhà hàng…', ' https://product.hstatic.net/1000341603/product/ghe-an-cafe-nelson-boc-da-chan-sat-nhap-khau-1_e6cd36123c51462db759a52f193cdfdf_master.jpg', 0),
 (4, 'Ghế ngồi đẹp G6 - Ghế gỗ tự nhiên nệm ngồi (KENNEDY)', 2050000, ' 53x64 x 45/76cm', '7kg', 'Nâu', 'Ghế cafe đẹp G6 - Ghế gỗ tự nhiên nệm ngồi\n\n• Ghế Kennedy - The Chair - The Round Chair là kiệt tác của kiến trúc sư bậc thầy Hans J.Wegner. Nó đã được bình chọn là một trong những chiếc ghế đẹp nhất thế giới.\n\n• Ghế Kennedy thể hiện sự sang trọng, uy quyền, không chỉ được sử dụng nhiều trong không gian phòng họp, hay phòng đọc sách mà The chair còn được yêu thích trong những quán cafe, nhà hàng sang trọng .\n\n> Mặt ngồi cốt gỗ, bọc da nhân tạo\n\n> Chân gỗ tự nhiên sơn PU\n\n> Xuất xứ: Việ', ' https://product.hstatic.net/1000341603/product/ghe_cafe_kennedy_go_soi_cao_cap_9aa02ff482fc422ab8c831f275b5381d_master.jpg', 0),
@@ -169,14 +169,15 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id_ref`, `username`, `password`, `name`, `address`, `sdt`, `mail`, `type`, `last_time`, `token`) VALUES
-(0, 'admin', '1', '', '', '', '', 1, 1624252238.8086, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZF9yZWYiOjAsInVzZXJuYW1lIjoiYWRtaW4iLCJwYXNzd29yZCI6IjEiLCJuYW1lIjoiIiwiYWRkcmVzcyI6IiIsInNkdCI6IiIsIm1haWwiOiIiLCJ0eXBlIjoxLCJsYXN0X3RpbWUiOjE2MDg5NTQ2NTAuNjEzOX0.oSxXPsXcJXqeWNHFKc77SIHOzQ2YmzLBrdCMf8ea8EM'),
-(0, 'My', '1', 'Nguyễn Diễm My', 'Số 23 Cầu Giấy, Hà Nội', '0339547822', 'diemmy1123@gmail.com', 0, 1624252238.8086, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZF9yZWYiOjAsInVzZXJuYW1lIjoiTXkiLCJwYXNzd29yZCI6IjEiLCJuYW1lIjoiTmd1eVx1MWVjNW4gRGlcdTFlYzVtIE15IiwiYWRkcmVzcyI6IlNcdTFlZDEgMjMgQ1x1MWVhN3UgR2lcdTFlYTV5LCBIXHUwMGUwIE5cdTFlZDlpIiwic2R0IjoiMDMzOTU0NzgyMiIsIm1haWwiOiJkaWVtbXkxMTIzQGdtYWlsLmNvbSIsInR5cGUiOjAsImxhc3RfdGltZSI6MTYxNjgyMDE3MC41NzU0MTV9.VfaVw44y98rTwSVsE2IMQzJP3rW08441Lm0i46s60tc'),
-(0, 'ngdhg', '1', 'name Huong', '', '0339457822', '', 1, 1624252238.8086, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZF9yZWYiOjAsInVzZXJuYW1lIjoibmdkaGciLCJwYXNzd29yZCI6IjEiLCJuYW1lIjoibmFtZSBIdW9uZyIsImFkZHJlc3MiOiIiLCJzZHQiOiIwMzM5NDU3ODIyIiwibWFpbCI6IiIsInR5cGUiOjEsImxhc3RfdGltZSI6MTYxNjc2NjkzNy4zNDE5Mjd9.VJ8Mcnck6TxpZMMSUhvTBBa_85cn052jWpuWVmQAuc4'),
-(0, 'phamha', '1', 'Phạm Thị Hà', '213 Trần Bình, Hà Nội', '0339904785', 'Phamha7337@gmail.com', 0, 1624252238.8086, ''),
-(0, 'Thuthao', '1', 'Nguyễn Thu Thảo', '25 Cầu Giấy, Hà Nội', '0377951742', 'thuthao23@gmail.com', 0, 1624252238.8086, ''),
-(0, 'tiendat', '1', 'Nguyễn Tiến Đạt', 'Ngõ 20, Trương Định, Hai Bà Trưng, Hà Nội', '0339457822', 'tiendatpc45@gmail.com', 0, 1624252238.8086, ''),
-(0, 'trantrang', '1', 'Trần Thu Trang', '231 Cầu Giấy Hà Nội', '0369523156', 'thutrang1325@gmail.com', 0, 1624252238.8086, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZF9yZWYiOjAsInVzZXJuYW1lIjoidHJhbnRyYW5nIiwicGFzc3dvcmQiOiIxIiwibmFtZSI6IlRyXHUxZWE3biBUaHUgVHJhbmciLCJhZGRyZXNzIjoiMjMxIENcdTFlYTd1IEdpXHUxZWE1eSBIXHUwMGUwIE5cdTFlZDlpIiwic2R0IjoiMDM2OTUyMzE1NiIsIm1haWwiOiJ0aHV0cmFuZzEzMjVAZ21haWwuY29tIiwidHlwZSI6MCwibGFzdF90aW1lIjoxNjE2MzM4ODYyLjM3NTEzMn0.kCVtANu4RttE5pSeAc42W8qkLoBujAHJ0njOVUbTPmA'),
-(0, 'Vy', '1', 'Trần Thị Khánh Vy', 'Số 45 ngõ 12 Hoàng Quốc Việt, Bắc Từ Liêm, Hà Nội', '0339574256', 'vyvy42@gmail.com', 0, 1624252238.8086, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZF9yZWYiOjAsInVzZXJuYW1lIjoiVnkiLCJwYXNzd29yZCI6IjEiLCJuYW1lIjoiVHJcdTFlYTduIFRoXHUxZWNiIEtoXHUwMGUxbmggVnkiLCJhZGRyZXNzIjoiU1x1MWVkMSA0NSBuZ1x1MDBmNSAxMiBIb1x1MDBlMG5nIFF1XHUxZWQxYyBWaVx1MWVjN3QsIEJcdTFlYWZjIFRcdTFlZWIgTGlcdTAwZWFtLCBIXHUwMGUwIE5cdTFlZDlpIiwic2R0IjoiMDMzOTU3NDI1NiIsIm1haWwiOiJ2eXZ5NDJAZ21haWwuY29tIiwidHlwZSI6MCwibGFzdF90aW1lIjoxNjE2MTcwMDE2LjI5MTY0N30.cKK2XAcSPiUrE5Qb7X6RW4A5veCdGhA82C0yU-A3aiQ');
+(0, 'admin', '1', 'ADMIN ', '', 'edre', '', 1, 1624261984.5613, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZF9yZWYiOjAsInVzZXJuYW1lIjoiYWRtaW4iLCJwYXNzd29yZCI6IjEiLCJuYW1lIjoiQURNSU5cdTAwYTAiLCJhZGRyZXNzIjoiIiwic2R0IjoiZWRyZSIsIm1haWwiOiIiLCJ0eXBlIjoxLCJsYXN0X3RpbWUiOjE2MjQyNjE4NDMuOTE0Mzc3fQ.Qo28R_8VM2d8Mm5A0cM9o37Hl7wwEkv9OHBHbIQ6QpA'),
+(0, 'dat', '1', 'Tiến Đạt Khách', '', '', '', 1, 1624261984.5613, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZF9yZWYiOjAsInVzZXJuYW1lIjoiZGF0IiwicGFzc3dvcmQiOiIxIiwibmFtZSI6IlRpXHUxZWJmbiBcdTAxMTBcdTFlYTF0IEtoXHUwMGUxY2giLCJhZGRyZXNzIjoiIiwic2R0IjoiIiwibWFpbCI6IiIsInR5cGUiOjAsImxhc3RfdGltZSI6MTYyNDI2MTgzMS4xMTUzNTV9.L0fpkP3FWBrlgZ2JdYIEXDDciYZGL-j81g_H214Wu8M'),
+(0, 'hoang', '1', 'Thân Trọng Hoàng', '', '333423', '', 0, 1624261984.5613, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZF9yZWYiOjAsInVzZXJuYW1lIjoiaG9hbmciLCJwYXNzd29yZCI6IjEiLCJuYW1lIjoiVGhcdTAwZTJuIFRyXHUxZWNkbmcgSG9cdTAwZTBuZyIsImFkZHJlc3MiOiIiLCJzZHQiOiIzMzM0MjMiLCJtYWlsIjoiIiwidHlwZSI6MCwibGFzdF90aW1lIjoxNjI0MjYxNzMyLjQ2MjAyfQ.Y6g4n9ie0j2VQZ4Rz5xPwMRe4kFvlEt3Ufev98BN3b4'),
+(0, 'My', '1', 'Nguyễn Diễm My', 'Số 23 Cầu Giấy, Hà Nội', '0339547822', 'diemmy1123@gmail.com', 0, 1624261984.5613, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZF9yZWYiOjAsInVzZXJuYW1lIjoiTXkiLCJwYXNzd29yZCI6IjEiLCJuYW1lIjoiTmd1eVx1MWVjNW4gRGlcdTFlYzVtIE15IiwiYWRkcmVzcyI6IlNcdTFlZDEgMjMgQ1x1MWVhN3UgR2lcdTFlYTV5LCBIXHUwMGUwIE5cdTFlZDlpIiwic2R0IjoiMDMzOTU0NzgyMiIsIm1haWwiOiJkaWVtbXkxMTIzQGdtYWlsLmNvbSIsInR5cGUiOjAsImxhc3RfdGltZSI6MTYxNjgyMDE3MC41NzU0MTV9.VfaVw44y98rTwSVsE2IMQzJP3rW08441Lm0i46s60tc'),
+(0, 'phamha', '1', 'Phạm Thị Hà', '213 Trần Bình, Hà Nội', '0339904785', 'Phamha7337@gmail.com', 0, 1624261984.5613, ''),
+(0, 'Thuthao', '1', 'Nguyễn Thu Thảo', '25 Cầu Giấy, Hà Nội', '0377951742', 'thuthao23@gmail.com', 0, 1624261984.5613, ''),
+(0, 'tiendat', '1', 'Nguyễn Tiến Đạt', 'Ngõ 20, Trương Định, Hai Bà Trưng, Hà Nội', '0339457822', 'tiendatpc45@gmail.com', 0, 1624261984.5613, ''),
+(0, 'trantrang', '1', 'Trần Thu Trang', '231 Cầu Giấy Hà Nội', '0369523156', 'thutrang1325@gmail.com', 0, 1624261984.5613, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZF9yZWYiOjAsInVzZXJuYW1lIjoidHJhbnRyYW5nIiwicGFzc3dvcmQiOiIxIiwibmFtZSI6IlRyXHUxZWE3biBUaHUgVHJhbmciLCJhZGRyZXNzIjoiMjMxIENcdTFlYTd1IEdpXHUxZWE1eSBIXHUwMGUwIE5cdTFlZDlpIiwic2R0IjoiMDM2OTUyMzE1NiIsIm1haWwiOiJ0aHV0cmFuZzEzMjVAZ21haWwuY29tIiwidHlwZSI6MCwibGFzdF90aW1lIjoxNjE2MzM4ODYyLjM3NTEzMn0.kCVtANu4RttE5pSeAc42W8qkLoBujAHJ0njOVUbTPmA'),
+(0, 'Vy', '1', 'Trần Thị Khánh Vy', 'Số 45 ngõ 12 Hoàng Quốc Việt, Bắc Từ Liêm, Hà Nội', '0339574256', 'vyvy42@gmail.com', 0, 1624261984.5613, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZF9yZWYiOjAsInVzZXJuYW1lIjoiVnkiLCJwYXNzd29yZCI6IjEiLCJuYW1lIjoiVHJcdTFlYTduIFRoXHUxZWNiIEtoXHUwMGUxbmggVnkiLCJhZGRyZXNzIjoiU1x1MWVkMSA0NSBuZ1x1MDBmNSAxMiBIb1x1MDBlMG5nIFF1XHUxZWQxYyBWaVx1MWVjN3QsIEJcdTFlYWZjIFRcdTFlZWIgTGlcdTAwZWFtLCBIXHUwMGUwIE5cdTFlZDlpIiwic2R0IjoiMDMzOTU3NDI1NiIsIm1haWwiOiJ2eXZ5NDJAZ21haWwuY29tIiwidHlwZSI6MCwibGFzdF90aW1lIjoxNjE2MTcwMDE2LjI5MTY0N30.cKK2XAcSPiUrE5Qb7X6RW4A5veCdGhA82C0yU-A3aiQ');
 
 --
 -- Chỉ mục cho các bảng đã đổ
