@@ -26,7 +26,7 @@
       if (isset($_REQUEST['id_ref'])) {
         $userDAO->id_ref = $_REQUEST['id_ref'];
         $userDAO->username  = $body->username ;
-        // $userDAO->password = $body->password;
+        $userDAO->password = $body->password;
         $userDAO->name = $body->name;
         $userDAO->address = $body->address;
         $userDAO->sdt = $body->sdt;
@@ -71,7 +71,7 @@
       if (isset($_REQUEST['id_ref'])) {
         $userDAO->id_ref = $_REQUEST['id_ref'];
         $userDAO->username  = $body->username ;
-        // $userDAO->password = $body->password;
+        $userDAO->password = $body->password;
         $userDAO->name = $body->name;
         $userDAO->address = $body->address;
         $userDAO->sdt = $body->sdt;
